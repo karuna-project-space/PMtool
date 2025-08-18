@@ -517,6 +517,204 @@
           "response": []
         }
       ]
+    },
+    {
+      "name": "Report Generation",
+      "item": [
+        {
+          "name": "Get Available Report Types",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/reports/types",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reports", "types"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Report Preview",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/reports/preview?reportType=comprehensive&dateRange=30",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reports", "preview"],
+              "query": [
+                {
+                  "key": "reportType",
+                  "value": "comprehensive"
+                },
+                {
+                  "key": "dateRange",
+                  "value": "30"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Comprehensive Report - PDF",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/reports/generate?format=pdf&reportType=comprehensive&dateRange=30&includeCharts=true",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reports", "generate"],
+              "query": [
+                {
+                  "key": "format",
+                  "value": "pdf"
+                },
+                {
+                  "key": "reportType",
+                  "value": "comprehensive"
+                },
+                {
+                  "key": "dateRange",
+                  "value": "30"
+                },
+                {
+                  "key": "includeCharts",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Comprehensive Report - Excel",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/reports/generate?format=excel&reportType=comprehensive&dateRange=30",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reports", "generate"],
+              "query": [
+                {
+                  "key": "format",
+                  "value": "excel"
+                },
+                {
+                  "key": "reportType",
+                  "value": "comprehensive"
+                },
+                {
+                  "key": "dateRange",
+                  "value": "30"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Utilization Report",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/reports/generate/utilization?format=pdf&dateRange=30",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reports", "generate", "utilization"],
+              "query": [
+                {
+                  "key": "format",
+                  "value": "pdf"
+                },
+                {
+                  "key": "dateRange",
+                  "value": "30"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Department Report",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/reports/generate/department?format=excel",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reports", "generate", "department"],
+              "query": [
+                {
+                  "key": "format",
+                  "value": "excel"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Bench Analysis Report",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/reports/generate/bench?format=pdf",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reports", "generate", "bench"],
+              "query": [
+                {
+                  "key": "format",
+                  "value": "pdf"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Skills Report",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/reports/generate/skills?format=pdf",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reports", "generate", "skills"],
+              "query": [
+                {
+                  "key": "format",
+                  "value": "pdf"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Billing Report",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/reports/generate/billing?format=excel",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reports", "generate", "billing"],
+              "query": [
+                {
+                  "key": "format",
+                  "value": "excel"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
     }
   ]
 }
