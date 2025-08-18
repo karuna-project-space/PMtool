@@ -1,0 +1,45 @@
+{
+  "name": "employee-management-api",
+  "version": "1.0.0",
+  "description": "Comprehensive Node.js REST API for Employee Management with PostgreSQL, featuring bulk upload, dashboard analytics, and export functionality",
+  "main": "server.js",
+  "private": true,
+  "keywords": [
+    "employee-management",
+    "nodejs",
+    "postgresql",
+    "rest-api",
+    "dashboard",
+    "bulk-upload",
+    "analytics"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/karuna-project-space/PMtool.git"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "db:check": "node src/database/setup/checkPrerequisites.js",
+    "db:init": "node src/database/init/createDatabase.js",
+    "db:setup": "node src/database/setup/setupDatabase.js",
+    "migrate": "node src/database/migrations/runMigrations.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "csv-parser": "^3.2.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "helmet": "^7.1.0",
+    "joi": "^17.11.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "multer": "^2.0.2",
+    "pg": "^8.11.3",
+    "uuid": "^11.1.0"
+  }
+}

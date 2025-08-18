@@ -1,0 +1,4 @@
+department,cost_center,role,employee_type,location,billing_status,hourly_rate,utilization_target,start_date,end_date,skills
+"Engineering","ENG004","Software Engineer","Full-time","Austin","Billable",75.00,80,"2024-03-15","","JavaScript, Python, React"
+"Design","DES003","UI Designer","Contract","Remote","Billable",65.00,70,"2024-03-01","2024-12-31","Figma, Sketch, Adobe XD"
+"Marketing","MKT002","Content Manager","Part-time","Chicago","Non-billable",40.00,60,"2024-02-15","","Content Writing, SEO, Social Media"

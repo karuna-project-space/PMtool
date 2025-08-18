@@ -1,0 +1,43 @@
+{
+  "employees": [
+    {
+      "department": "Engineering",
+      "costCenter": "ENG005",
+      "role": "DevOps Engineer",
+      "employeeType": "Full-time",
+      "location": "Seattle",
+      "billingStatus": "Billable",
+      "hourlyRate": 95.00,
+      "utilizationTarget": 85,
+      "startDate": "2024-03-10",
+      "endDate": null,
+      "skills": ["AWS", "Docker", "Kubernetes", "Terraform", "Jenkins"]
+    },
+    {
+      "department": "Sales",
+      "costCenter": "SAL002",
+      "role": "Account Executive",
+      "employeeType": "Full-time",
+      "location": "Miami",
+      "billingStatus": "Non-billable",
+      "hourlyRate": 60.00,
+      "utilizationTarget": 90,
+      "startDate": "2024-02-20",
+      "endDate": null,
+      "skills": ["Salesforce", "Lead Generation", "Client Relations", "Negotiation"]
+    },
+    {
+      "department": "QA",
+      "costCenter": "QA001",
+      "role": "QA Engineer",
+      "employeeType": "Contract",
+      "location": "Denver",
+      "billingStatus": "Billable",
+      "hourlyRate": 70.00,
+      "utilizationTarget": 80,
+      "startDate": "2024-03-05",
+      "endDate": "2024-09-05",
+      "skills": ["Selenium", "Jest", "Cypress", "Manual Testing", "API Testing"]
+    }
+  ]
+}
