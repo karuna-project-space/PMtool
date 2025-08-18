@@ -37,12 +37,46 @@ A comprehensive Node.js REST API for managing employee data with PostgreSQL data
 - **Search Functionality**: Search employees by role, department, location, or skills
 - **Data Validation**: Comprehensive input validation using Joi
 - **Pagination Support**: Efficient data retrieval with pagination
+- **Report Generation**: Generate comprehensive HR analytics reports in PDF and Excel formats
 - **PostgreSQL Database**: Robust data persistence with proper indexing
 - **Database Migrations**: Automated database schema management
 - **Security**: Helmet.js for security headers and CORS configuration
 - **Error Handling**: Structured error responses with proper HTTP status codes
 
 ## API Endpoints
+
+### Report Generation
+
+#### GET /api/reports/types
+Get available report types and their descriptions.
+
+#### GET /api/reports/preview
+Get a preview of report data without generating the actual file.
+
+**Query Parameters:**
+- `reportType` (optional): Type of report - 'comprehensive', 'utilization', 'department', 'bench', 'skills', 'billing' (default: comprehensive)
+- `dateRange` (optional): Analysis period in days (default: 30)
+
+#### GET /api/reports/generate
+Generate comprehensive HR analytics report.
+
+**Query Parameters:**
+- `format` (optional): Report format - 'pdf' or 'excel' (default: pdf)
+- `reportType` (optional): Type of report (default: comprehensive)
+- `dateRange` (optional): Analysis period in days (default: 30)
+- `includeCharts` (optional): Include charts in PDF reports (default: true)
+- `departments` (optional): Filter by specific departments
+- `locations` (optional): Filter by specific locations
+
+#### GET /api/reports/generate/:reportType
+Generate specific type of report.
+
+**Path Parameters:**
+- `reportType`: Type of report - 'utilization', 'department', 'bench', 'skills', 'billing'
+
+**Query Parameters:**
+- `format` (optional): Report format - 'pdf' or 'excel' (default: pdf)
+- `dateRange` (optional): Analysis period in days (default: 30)
 
 ### Bulk Upload Operations
 
