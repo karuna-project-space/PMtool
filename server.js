@@ -8,6 +8,7 @@ const { testConnection } = require('./src/config/database');
 const employeeRoutes = require('./src/routes/employeeRoutes');
 const dashboardRoutes = require('./src/routes/dashboardRoutes');
 const bulkUploadRoutes = require('./src/routes/bulkUploadRoutes');
+const reportRoutes = require('./src/routes/reportRoutes');
 const { errorHandler } = require('./src/middleware/errorHandler');
 
 const app = express();
@@ -44,6 +45,7 @@ app.get('/health', (req, res) => {
 app.use('/api/employees', employeeRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/bulk-upload', bulkUploadRoutes);
+app.use('/api/reports', reportRoutes);
 
 // 404 handler
 app.use('*', (req, res) => {
