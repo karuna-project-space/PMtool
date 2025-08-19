@@ -1,0 +1,770 @@
+{
+  "info": {
+    "name": "Employee Management API - Complete Collection",
+    "description": "Complete API collection for Employee Management System with PostgreSQL, Dashboard Analytics, Bulk Upload, and Report Generation",
+    "version": "2.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "employeeId",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "item": [
+        {
+          "name": "API Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["health"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Employee Management",
+      "item": [
+        {
+          "name": "Get All Employees",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/employees?page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "employees"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "department",
+                  "value": "Engineering",
+                  "disabled": true
+                },
+                {
+                  "key": "employeeType",
+                  "value": "Full-time",
+                  "disabled": true
+                },
+                {
+                  "key": "location",
+                  "value": "New York",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Employee by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/employees/{{employeeId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "employees", "{{employeeId}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add New Employee",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"department\": \"Engineering\",\n  \"costCenter\": \"ENG003\",\n  \"role\": \"Full Stack Developer\",\n  \"employeeType\": \"Full-time\",\n  \"location\": \"San Francisco\",\n  \"billingStatus\": \"Billable\",\n  \"hourlyRate\": 80.00,\n  \"utilizationTarget\": 85,\n  \"startDate\": \"2024-03-01\",\n  \"endDate\": null,\n  \"skills\": [\"JavaScript\", \"React\", \"Node.js\", \"PostgreSQL\", \"Docker\"]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/employees",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "employees"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Employee",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"department\": \"Engineering\",\n  \"costCenter\": \"ENG003\",\n  \"role\": \"Senior Full Stack Developer\",\n  \"employeeType\": \"Full-time\",\n  \"location\": \"San Francisco\",\n  \"billingStatus\": \"Billable\",\n  \"hourlyRate\": 90.00,\n  \"utilizationTarget\": 85,\n  \"startDate\": \"2024-03-01\",\n  \"endDate\": null,\n  \"skills\": [\"JavaScript\", \"React\", \"Node.js\", \"PostgreSQL\", \"Docker\", \"AWS\"]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/employees/{{employeeId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "employees", "{{employeeId}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Employee",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/employees/{{employeeId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "employees", "{{employeeId}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search Employees",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/employees/search/JavaScript?limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "employees", "search", "JavaScript"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Filter Options - Departments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/employees/filters/departments",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "employees", "filters", "departments"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Filter Options - Locations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/employees/filters/locations",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "employees", "filters", "locations"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Filter Options - Employee Types",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/employees/filters/employeeTypes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "employees", "filters", "employeeTypes"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Filter Options - Billing Statuses",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/employees/filters/billingStatuses",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "employees", "filters", "billingStatuses"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Export Employees - CSV",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/employees/export?format=csv",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "employees", "export"],
+              "query": [
+                {
+                  "key": "format",
+                  "value": "csv"
+                },
+                {
+                  "key": "department",
+                  "value": "Engineering",
+                  "disabled": true
+                },
+                {
+                  "key": "employeeType",
+                  "value": "Full-time",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Export Employees - JSON",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/employees/export?format=json",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "employees", "export"],
+              "query": [
+                {
+                  "key": "format",
+                  "value": "json"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Dashboard Analytics",
+      "item": [
+        {
+          "name": "Dashboard Overview",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/overview",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dashboard", "overview"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Employee Analytics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/analytics",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dashboard", "analytics"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Utilization Metrics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/utilization?period=30",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dashboard", "utilization"],
+              "query": [
+                {
+                  "key": "period",
+                  "value": "30"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Department Breakdown",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/departments",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dashboard", "departments"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Skills Distribution",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/skills?limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dashboard", "skills"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Recent Activities",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/activities?limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dashboard", "activities"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Location Distribution",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/locations",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dashboard", "locations"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Billing Overview",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/billing",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dashboard", "billing"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Employee Type Distribution",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/employee-types",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dashboard", "employee-types"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Bench Analysis",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/bench",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dashboard", "bench"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Bulk Upload",
+      "item": [
+        {
+          "name": "Download CSV Template",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/bulk-upload/template?format=csv",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "bulk-upload", "template"],
+              "query": [
+                {
+                  "key": "format",
+                  "value": "csv"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Download JSON Template",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/bulk-upload/template?format=json",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "bulk-upload", "template"],
+              "query": [
+                {
+                  "key": "format",
+                  "value": "json"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Validate File Before Upload",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/bulk-upload/validate",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "bulk-upload", "validate"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Process Bulk Upload",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/bulk-upload",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "bulk-upload"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Upload History",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/bulk-upload/history",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "bulk-upload", "history"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Report Generation",
+      "item": [
+        {
+          "name": "Get Available Report Types",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/reports/types",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reports", "types"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Report Preview",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/reports/preview?reportType=comprehensive&dateRange=30",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reports", "preview"],
+              "query": [
+                {
+                  "key": "reportType",
+                  "value": "comprehensive"
+                },
+                {
+                  "key": "dateRange",
+                  "value": "30"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Comprehensive Report - PDF",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/reports/generate?format=pdf&reportType=comprehensive&dateRange=30&includeCharts=true",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reports", "generate"],
+              "query": [
+                {
+                  "key": "format",
+                  "value": "pdf"
+                },
+                {
+                  "key": "reportType",
+                  "value": "comprehensive"
+                },
+                {
+                  "key": "dateRange",
+                  "value": "30"
+                },
+                {
+                  "key": "includeCharts",
+                  "value": "true"
+                },
+                {
+                  "key": "departments",
+                  "value": "Engineering,Design",
+                  "disabled": true
+                },
+                {
+                  "key": "locations",
+                  "value": "New York,San Francisco",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Comprehensive Report - Excel",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/reports/generate?format=excel&reportType=comprehensive&dateRange=30",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reports", "generate"],
+              "query": [
+                {
+                  "key": "format",
+                  "value": "excel"
+                },
+                {
+                  "key": "reportType",
+                  "value": "comprehensive"
+                },
+                {
+                  "key": "dateRange",
+                  "value": "30"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Utilization Report",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/reports/generate/utilization?format=pdf&dateRange=30",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reports", "generate", "utilization"],
+              "query": [
+                {
+                  "key": "format",
+                  "value": "pdf"
+                },
+                {
+                  "key": "dateRange",
+                  "value": "30"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Department Report",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/reports/generate/department?format=excel",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reports", "generate", "department"],
+              "query": [
+                {
+                  "key": "format",
+                  "value": "excel"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Bench Analysis Report",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/reports/generate/bench?format=pdf",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reports", "generate", "bench"],
+              "query": [
+                {
+                  "key": "format",
+                  "value": "pdf"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Skills Report",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/reports/generate/skills?format=pdf",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reports", "generate", "skills"],
+              "query": [
+                {
+                  "key": "format",
+                  "value": "pdf"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Billing Report",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/reports/generate/billing?format=excel",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reports", "generate", "billing"],
+              "query": [
+                {
+                  "key": "format",
+                  "value": "excel"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Filtered Report",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/reports/generate?format=pdf&reportType=comprehensive&dateRange=60&departments=Engineering&locations=New York",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reports", "generate"],
+              "query": [
+                {
+                  "key": "format",
+                  "value": "pdf"
+                },
+                {
+                  "key": "reportType",
+                  "value": "comprehensive"
+                },
+                {
+                  "key": "dateRange",
+                  "value": "60"
+                },
+                {
+                  "key": "departments",
+                  "value": "Engineering"
+                },
+                {
+                  "key": "locations",
+                  "value": "New York"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
