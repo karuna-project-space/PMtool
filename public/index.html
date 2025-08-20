@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpsDash - Operations Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <span class="logo-text">OpsDash</span>
+                </div>
+                <nav class="nav-menu">
+                    <a href="#" class="nav-item">
+                        <i class="fas fa-folder"></i>
+                        Projects
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i class="fas fa-users"></i>
+                        Resources
+                    </a>
+                </nav>
+            </div>
+            <div class="header-right">
+                <button class="create-project-btn">
+                    <i class="fas fa-plus"></i>
+                    Create Project
+                </button>
+                <div class="notification-icon">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </div>
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <span>PP</span>
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name">Pavan Paruchuri</span>
+                        <span class="user-role">Project Manager</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="dashboard-header">
+                <h1>Operations Dashboard</h1>
+                <p class="dashboard-subtitle">Real-time insights into project profitability and resource utilization</p>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="kpi-grid">
+                <div class="kpi-card revenue">
+                    <div class="kpi-header">
+                        <span class="kpi-title">Total Revenue</span>
+                        <div class="kpi-icon">
+                            <i class="fas fa-arrow-trend-up"></i>
+                        </div>
+                    </div>
+                    <div class="kpi-value">₹5,41,12,500</div>
+                    <div class="kpi-subtitle">$650,000 USD</div>
+                </div>
+
+                <div class="kpi-card profit">
+                    <div class="kpi-header">
+                        <span class="kpi-title">Total Profit</span>
+                        <div class="kpi-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="kpi-value">₹1,24,87,500</div>
+                    <div class="kpi-subtitle">$150,000 USD</div>
+                </div>
+
+                <div class="kpi-card utilization">
+                    <div class="kpi-header">
+                        <span class="kpi-title">Avg Utilization</span>
+                        <div class="kpi-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                    <div class="kpi-value">77.5%</div>
+                    <div class="kpi-subtitle">Target: 80%</div>
+                </div>
+
+                <div class="kpi-card projects">
+                    <div class="kpi-header">
+                        <span class="kpi-title">Active Projects</span>
+                        <div class="kpi-icon">
+                            <i class="fas fa-folder-open"></i>
+                        </div>
+                    </div>
+                    <div class="kpi-value">2</div>
+                    <div class="kpi-subtitle">In Progress</div>
+                </div>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="tab-navigation">
+                <button class="tab-btn active" data-tab="overview">Overview</button>
+                <button class="tab-btn" data-tab="projects">Projects</button>
+                <button class="tab-btn" data-tab="resources">Resources</button>
+                <button class="tab-btn" data-tab="bench-report">Bench Report</button>
+                <button class="tab-btn" data-tab="currency">Currency</button>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <div class="tab-pane active" id="overview">
+                    <div class="content-grid">
+                        <!-- Recent Projects -->
+                        <div class="content-card">
+                            <div class="card-header">
+                                <h3>Recent Projects</h3>
+                                <p class="card-subtitle">Latest project updates and status</p>
+                            </div>
+                            <div class="project-list">
+                                <div class="project-item">
+                                    <div class="project-info">
+                                        <h4>Project Alpha</h4>
+                                        <p>Profit: $130,000</p>
+                                    </div>
+                                    <span class="status-badge active">active</span>
+                                </div>
+                                <div class="project-item">
+                                    <div class="project-info">
+                                        <h4>Project Beta</h4>
+                                        <p>Profit: $20,000</p>
+                                    </div>
+                                    <span class="status-badge active">active</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Resource Alerts -->
+                        <div class="content-card">
+                            <div class="card-header">
+                                <h3>Resource Alerts</h3>
+                                <p class="card-subtitle">Resources requiring attention</p>
+                            </div>
+                            <div class="alert-list">
+                                <div class="alert-item warning">
+                                    <div class="alert-icon">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </div>
+                                    <div class="alert-content">
+                                        <h4>Underutilized Resources</h4>
+                                        <p>2 resources on bench</p>
+                                    </div>
+                                </div>
+                                <div class="alert-item danger">
+                                    <div class="alert-icon">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                    </div>
+                                    <div class="alert-content">
+                                        <h4>Overutilized Resources</h4>
+                                        <p>2 resources above 95% utilization</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="projects">
+                    <div class="projects-content">
+                        <h3>Project Management</h3>
+                        <p>Manage and track all active projects</p>
+                        <!-- Projects content will be loaded here -->
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="resources">
+                    <div class="resources-content">
+                        <h3>Resource Management</h3>
+                        <p>Monitor resource allocation and utilization</p>
+                        <!-- Resources content will be loaded here -->
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="bench-report">
+                    <div class="bench-content">
+                        <h3>Bench Report</h3>
+                        <p>Track unassigned resources and bench time</p>
+                        <!-- Bench report content will be loaded here -->
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="currency">
+                    <div class="currency-content">
+                        <h3>Currency Management</h3>
+                        <p>Manage multi-currency projects and conversions</p>
+                        <!-- Currency content will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
