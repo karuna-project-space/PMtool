@@ -1,0 +1,301 @@
+{
+  "info": {
+    "name": "PM Dashboard API Collection",
+    "description": "Complete API collection for PM Operations Dashboard with Employee Management integration",
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "item": [
+        {
+          "name": "API Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["health"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "PM Dashboard",
+      "item": [
+        {
+          "name": "Get PM Dashboard Overview",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/pm/dashboard",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "pm", "dashboard"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Projects Data",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/pm/projects",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "pm", "projects"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Resources Data",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/pm/resources",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "pm", "resources"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Bench Report",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/pm/bench-report",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "pm", "bench-report"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Currency Data",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/pm/currency",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "pm", "currency"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Employee Management",
+      "item": [
+        {
+          "name": "Get All Employees",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/employees?page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "employees"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add New Employee",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"department\": \"Engineering\",\n  \"costCenter\": \"ENG003\",\n  \"role\": \"Full Stack Developer\",\n  \"employeeType\": \"Full-time\",\n  \"location\": \"San Francisco\",\n  \"billingStatus\": \"Billable\",\n  \"hourlyRate\": 80.00,\n  \"utilizationTarget\": 85,\n  \"startDate\": \"2024-03-01\",\n  \"endDate\": null,\n  \"skills\": [\"JavaScript\", \"React\", \"Node.js\", \"PostgreSQL\", \"Docker\"]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/employees",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "employees"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search Employees",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/employees/search/JavaScript?limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "employees", "search", "JavaScript"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Dashboard Analytics",
+      "item": [
+        {
+          "name": "Dashboard Overview",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/overview",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dashboard", "overview"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Department Breakdown",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/departments",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dashboard", "departments"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Utilization Metrics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/utilization?period=30",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dashboard", "utilization"],
+              "query": [
+                {
+                  "key": "period",
+                  "value": "30"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Bench Analysis",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/bench",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dashboard", "bench"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Report Generation",
+      "item": [
+        {
+          "name": "Get Available Report Types",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/reports/types",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reports", "types"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Comprehensive Report - PDF",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/reports/generate?format=pdf&reportType=comprehensive&dateRange=30",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reports", "generate"],
+              "query": [
+                {
+                  "key": "format",
+                  "value": "pdf"
+                },
+                {
+                  "key": "reportType",
+                  "value": "comprehensive"
+                },
+                {
+                  "key": "dateRange",
+                  "value": "30"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Department Report",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/reports/generate/department?format=excel",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reports", "generate", "department"],
+              "query": [
+                {
+                  "key": "format",
+                  "value": "excel"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
