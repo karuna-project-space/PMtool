@@ -1,8 +1,8 @@
 {
   "info": {
     "name": "Employee Management API - Complete Collection",
-    "description": "Complete API collection for Employee Management System with PostgreSQL, Dashboard Analytics, Bulk Upload, and Report Generation",
-    "version": "2.0.0",
+    "description": "Complete API collection for Employee Management System with PostgreSQL, Dashboard Analytics, Bulk Upload, Report Generation, PM Dashboard, and Authentication",
+    "version": "3.0.0",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
@@ -13,6 +13,11 @@
     },
     {
       "key": "employeeId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "authToken",
       "value": "",
       "type": "string"
     }
@@ -37,13 +42,295 @@
       ]
     },
     {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Login - Project Manager",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const response = pm.response.json();",
+                  "    if (response.success && response.data.token) {",
+                  "        pm.collectionVariables.set('authToken', response.data.token);",
+                  "        console.log('Token saved:', response.data.token);",
+                  "    }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"pavan.paruchuri@opsdash.com\",\n  \"password\": \"demo123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login - Admin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const response = pm.response.json();",
+                  "    if (response.success && response.data.token) {",
+                  "        pm.collectionVariables.set('authToken', response.data.token);",
+                  "    }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@opsdash.com\",\n  \"password\": \"admin123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login - HR Manager",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"hr@opsdash.com\",\n  \"password\": \"hr123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login - CEO",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"ceo@opsdash.com\",\n  \"password\": \"ceo123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login - Finance Manager",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"finance@opsdash.com\",\n  \"password\": \"finance123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "profile"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated Name\",\n  \"email\": \"updated.email@opsdash.com\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "profile"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Change Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currentPassword\": \"demo123\",\n  \"newPassword\": \"newpassword123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/change-password",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "change-password"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Forgot Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"pavan.paruchuri@opsdash.com\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/forgot-password",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "forgot-password"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Users (Admin Only)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "users"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/logout",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "logout"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
       "name": "Employee Management",
       "item": [
         {
           "name": "Get All Employees",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/employees?page=1&limit=10",
               "host": ["{{baseUrl}}"],
@@ -81,7 +368,13 @@
           "name": "Get Employee by ID",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/employees/{{employeeId}}",
               "host": ["{{baseUrl}}"],
@@ -98,6 +391,11 @@
               {
                 "key": "Content-Type",
                 "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
               }
             ],
             "body": {
@@ -120,6 +418,11 @@
               {
                 "key": "Content-Type",
                 "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
               }
             ],
             "body": {
@@ -138,7 +441,13 @@
           "name": "Delete Employee",
           "request": {
             "method": "DELETE",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/employees/{{employeeId}}",
               "host": ["{{baseUrl}}"],
@@ -151,7 +460,13 @@
           "name": "Search Employees",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/employees/search/JavaScript?limit=10",
               "host": ["{{baseUrl}}"],
@@ -170,7 +485,13 @@
           "name": "Get Filter Options - Departments",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/employees/filters/departments",
               "host": ["{{baseUrl}}"],
@@ -183,7 +504,13 @@
           "name": "Get Filter Options - Locations",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/employees/filters/locations",
               "host": ["{{baseUrl}}"],
@@ -196,7 +523,13 @@
           "name": "Get Filter Options - Employee Types",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/employees/filters/employeeTypes",
               "host": ["{{baseUrl}}"],
@@ -209,7 +542,13 @@
           "name": "Get Filter Options - Billing Statuses",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/employees/filters/billingStatuses",
               "host": ["{{baseUrl}}"],
@@ -222,7 +561,13 @@
           "name": "Export Employees - CSV",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/employees/export?format=csv",
               "host": ["{{baseUrl}}"],
@@ -251,7 +596,13 @@
           "name": "Export Employees - JSON",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/employees/export?format=json",
               "host": ["{{baseUrl}}"],
@@ -275,7 +626,13 @@
           "name": "Dashboard Overview",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/dashboard/overview",
               "host": ["{{baseUrl}}"],
@@ -288,7 +645,13 @@
           "name": "Employee Analytics",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/dashboard/analytics",
               "host": ["{{baseUrl}}"],
@@ -301,7 +664,13 @@
           "name": "Utilization Metrics",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/dashboard/utilization?period=30",
               "host": ["{{baseUrl}}"],
@@ -320,7 +689,13 @@
           "name": "Department Breakdown",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/dashboard/departments",
               "host": ["{{baseUrl}}"],
@@ -333,7 +708,13 @@
           "name": "Skills Distribution",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/dashboard/skills?limit=10",
               "host": ["{{baseUrl}}"],
@@ -352,7 +733,13 @@
           "name": "Recent Activities",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/dashboard/activities?limit=10",
               "host": ["{{baseUrl}}"],
@@ -371,7 +758,13 @@
           "name": "Location Distribution",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/dashboard/locations",
               "host": ["{{baseUrl}}"],
@@ -384,7 +777,13 @@
           "name": "Billing Overview",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/dashboard/billing",
               "host": ["{{baseUrl}}"],
@@ -397,7 +796,13 @@
           "name": "Employee Type Distribution",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/dashboard/employee-types",
               "host": ["{{baseUrl}}"],
@@ -410,11 +815,117 @@
           "name": "Bench Analysis",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/dashboard/bench",
               "host": ["{{baseUrl}}"],
               "path": ["api", "dashboard", "bench"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "PM Dashboard",
+      "item": [
+        {
+          "name": "Get PM Dashboard Overview",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/pm/dashboard",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "pm", "dashboard"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Projects Data",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/pm/projects",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "pm", "projects"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Resources Data",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/pm/resources",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "pm", "resources"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Bench Report",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/pm/bench-report",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "pm", "bench-report"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Currency Data",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/pm/currency",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "pm", "currency"]
             }
           },
           "response": []
@@ -428,7 +939,13 @@
           "name": "Download CSV Template",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/bulk-upload/template?format=csv",
               "host": ["{{baseUrl}}"],
@@ -447,7 +964,13 @@
           "name": "Download JSON Template",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/bulk-upload/template?format=json",
               "host": ["{{baseUrl}}"],
@@ -466,7 +989,13 @@
           "name": "Validate File Before Upload",
           "request": {
             "method": "POST",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "body": {
               "mode": "formdata",
               "formdata": [
@@ -489,7 +1018,13 @@
           "name": "Process Bulk Upload",
           "request": {
             "method": "POST",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "body": {
               "mode": "formdata",
               "formdata": [
@@ -512,81 +1047,17 @@
           "name": "Get Upload History",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/bulk-upload/history",
               "host": ["{{baseUrl}}"],
               "path": ["api", "bulk-upload", "history"]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "PM Dashboard",
-      "item": [
-        {
-          "name": "Get PM Dashboard Overview",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/api/pm/dashboard",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "pm", "dashboard"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get Projects Data",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/api/pm/projects",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "pm", "projects"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get Resources Data",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/api/pm/resources",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "pm", "resources"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get Bench Report",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/api/pm/bench-report",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "pm", "bench-report"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get Currency Data",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/api/pm/currency",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "pm", "currency"]
             }
           },
           "response": []
@@ -600,7 +1071,13 @@
           "name": "Get Available Report Types",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/reports/types",
               "host": ["{{baseUrl}}"],
@@ -613,7 +1090,13 @@
           "name": "Get Report Preview",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/reports/preview?reportType=comprehensive&dateRange=30",
               "host": ["{{baseUrl}}"],
@@ -636,7 +1119,13 @@
           "name": "Generate Comprehensive Report - PDF",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/reports/generate?format=pdf&reportType=comprehensive&dateRange=30&includeCharts=true",
               "host": ["{{baseUrl}}"],
@@ -677,7 +1166,13 @@
           "name": "Generate Comprehensive Report - Excel",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/reports/generate?format=excel&reportType=comprehensive&dateRange=30",
               "host": ["{{baseUrl}}"],
@@ -704,7 +1199,13 @@
           "name": "Generate Utilization Report",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/reports/generate/utilization?format=pdf&dateRange=30",
               "host": ["{{baseUrl}}"],
@@ -727,7 +1228,13 @@
           "name": "Generate Department Report",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/reports/generate/department?format=excel",
               "host": ["{{baseUrl}}"],
@@ -746,7 +1253,13 @@
           "name": "Generate Bench Analysis Report",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/reports/generate/bench?format=pdf",
               "host": ["{{baseUrl}}"],
@@ -765,7 +1278,13 @@
           "name": "Generate Skills Report",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/reports/generate/skills?format=pdf",
               "host": ["{{baseUrl}}"],
@@ -784,7 +1303,13 @@
           "name": "Generate Billing Report",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/reports/generate/billing?format=excel",
               "host": ["{{baseUrl}}"],
@@ -803,7 +1328,13 @@
           "name": "Generate Filtered Report",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "disabled": true
+              }
+            ],
             "url": {
               "raw": "{{baseUrl}}/api/reports/generate?format=pdf&reportType=comprehensive&dateRange=60&departments=Engineering&locations=New York",
               "host": ["{{baseUrl}}"],
