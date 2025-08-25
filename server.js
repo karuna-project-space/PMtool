@@ -10,6 +10,7 @@ const dashboardRoutes = require('./src/routes/dashboardRoutes');
 const bulkUploadRoutes = require('./src/routes/bulkUploadRoutes');
 const reportRoutes = require('./src/routes/reportRoutes');
 const pmRoutes = require('./src/routes/pmRoutes');
+const authRoutes = require('./src/routes/authRoutes');
 const { errorHandler } = require('./src/middleware/errorHandler');
 
 const app = express();
@@ -48,6 +49,7 @@ app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/bulk-upload', bulkUploadRoutes);
 app.use('/api/reports', reportRoutes);
 app.use('/api/pm', pmRoutes);
+app.use('/api/auth', authRoutes);
 
 // Serve static files for PM dashboard
 app.use(express.static('public'));
@@ -56,6 +58,17 @@ app.use(express.static('public'));
 app.get('/pm-dashboard', (req, res) => {
   res.sendFile(__dirname + '/public/index.html');
 });
+
+// Login page route
+app.get('/login', (req, res) => {
+  res.sendFile(__dirname + '/public/login.html');
+});
+
+// Root redirect to login
+app.get('/', (req, res) => {
+  res.redirect('/login');
+});
+
 // 404 handler
 app.use('*', (req, res) => {
   res.status(404).json({

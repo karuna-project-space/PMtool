@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - OpsDash</title>
+    <link rel="stylesheet" href="login-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <h1>Sign In</h1>
+                <p>Enter your credentials to continue</p>
+            </div>
+
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-envelope input-icon"></i>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="Enter your email" 
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            placeholder="Enter your password" 
+                            required
+                        >
+                        <button type="button" class="password-toggle" id="passwordToggle">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="forgot-password">
+                    <a href="#" id="forgotPasswordLink">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="sign-in-btn" id="signInBtn">
+                    <span class="btn-text">Sign In</span>
+                    <div class="btn-loader" style="display: none;">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </div>
+                </button>
+            </form>
+
+            <div class="demo-accounts">
+                <h3>Demo Accounts (Click to sign in)</h3>
+                <div class="demo-buttons">
+                    <button class="demo-btn" data-role="project-manager" data-email="pavan.paruchuri@opsdash.com">
+                        <i class="fas fa-project-diagram"></i>
+                        Project Manager - Pavan Paruchuri
+                    </button>
+                    <button class="demo-btn" data-role="admin" data-email="admin@opsdash.com">
+                        <i class="fas fa-user-shield"></i>
+                        Admin - Demo Account
+                    </button>
+                    <button class="demo-btn" data-role="hr-manager" data-email="hr@opsdash.com">
+                        <i class="fas fa-users"></i>
+                        HR Manager - Demo Account
+                    </button>
+                    <button class="demo-btn" data-role="ceo" data-email="ceo@opsdash.com">
+                        <i class="fas fa-crown"></i>
+                        CEO - Demo Account
+                    </button>
+                    <button class="demo-btn" data-role="finance-manager" data-email="finance@opsdash.com">
+                        <i class="fas fa-chart-line"></i>
+                        Finance Manager - Demo Account
+                    </button>
+                </div>
+            </div>
+
+            <div class="login-footer">
+                <p>Don't have an account? <a href="#" id="contactAdmin">Contact your administrator</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Signing you in...</p>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>
